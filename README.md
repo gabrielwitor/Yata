@@ -75,5 +75,26 @@ erDiagram
 	}
 ```
 
+### Roadmap
+
+```mermaid
+---
+config:
+  theme: redux-dark
+  look: neo
+---
+flowchart LR
+    n6["Basic CRUD Operations"]
+    
+    n1["POST /tasks"] --> n2["GET /tasks"]
+    n2 --> n3["PUT /tasks/:id"]
+    n3 --> n4["DELETE /tasks/:id"]
+    n4 --> n5["PATH /tasks/:id/complete"]
+    n6@{ icon: "fa:pen-to-square", pos: "b"}
+	
+    style n1 fill:#FFD600
+
+```
+
 ## Author
 > Created by [Gabriel Witor](https://github.com/gabrielwitor), 2025 August.
