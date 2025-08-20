@@ -5,7 +5,7 @@ import { database, now } from "./index.js";
 
 export const taskRoutes = [
 {
-    method: 'PUT',
+    method: 'POST',
     path: buildRoutePath('/tasks'),
     handler: (request, response) => {
         const {title, description} = request.body || {};

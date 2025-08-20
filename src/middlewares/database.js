@@ -22,7 +22,7 @@ export class Database {
     insert(table, data) {
         Array.isArray(this.#database[table])
             ? this.#database[table].push(data)
-            : (this.#database[table] = data);
+            : (this.#database[table] = [data]);
 
         this.#persist();
     }
