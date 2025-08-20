@@ -13,8 +13,12 @@ const server = http.createServer( async (request, response) => {
 
     const route = routes.find((route)=>{
 
-        return (route.method === request.method && request.url.match(route.path));
+        return (route.method === request.method && route.path.test(request.url));
     })
+
+    if(route){
+        return route.handler(request, response);
+    }
 
     return response.writeHead(404).end();
 })
