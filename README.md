@@ -17,7 +17,7 @@ In this project a JSON file is used as a database for the storage of tasks and t
 |-------------|---------------|-------------------------------|
 | **id** | UUID | 🔑 PK, not null, unique |
 | **title** | TEXT | not null |
-| **desciption** | TEXT | null |
+| **description** | TEXT | null |
 | **completed_at** | DATE | null |
 | **created_at** | DATE | not null |
 | **updated_at** | DATE | null |
@@ -56,7 +56,7 @@ erDiagram
 	task {
 		UUID id
 		TEXT title
-		TEXT desciption
+		TEXT description
 		DATE completed_at
 		DATE created_at
 		DATE updated_at
