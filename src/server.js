@@ -1,6 +1,7 @@
 import http from "node:http";
 import { json } from "./middlewares/json.js";
 import { routes } from "./routes/index.js";
+import { extractQueryParams } from "./utils/extract-query-params..js";
 
 
 // Criação de task, Listagem, Atualização, Remoção, Marcar tarefa como completa, 
@@ -13,11 +14,18 @@ const server = http.createServer( async (request, response) => {
 
     const route = routes.find((route)=>{
 
-        return (route.method === request.method && route.path.test(request.url));
+        return (route.method === request.method && route.path.test(request.url))
     })
 
     if(route){
-        return route.handler(request, response);
+        const routeParams = request.url.match(route.path);
+
+        const {query, ...params} = routeParams.groups;
+
+        request.params = params;
+        request.query = query ? extractQueryParams(query) : {};
+
+        return route.handler(request, response); 
     }
 
     return response.writeHead(404).end();
